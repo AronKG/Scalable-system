@@ -6,21 +6,65 @@ const PORT = 3001; // Port for API Gateway
 const axios = require('axios');
 
 // Define routes and forward requests to the corresponding microservices
-app.get('/api1', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
-    const response = await axios.get('http://localhost:3002/api1'); // Request to Service 1: API 1
-    res.json(response.data);
+    res.json("Gateway");
   } catch (error) {
-    res.status(500).json({ error: 'Error communicating with API 1' });
+    res.status(500).json({ error: 'Error communicating with API 1' }); // Empty service
   }
 });
 
-app.get('/api2', async (req, res) => {
+app.get('/Login', async (req, res) => {
   try {
-    const response = await axios.get('http://localhost:3003/api2'); // Request to Service 2: API 2
+    const response = await axios.get('http://localhost:3004/Login');  // request to login
     res.json(response.data);
   } catch (error) {
-    res.status(500).json({ error: 'Error communicating with API 2' });
+    res.status(500).json({ error: 'Error communicating with Login' });
+  }
+});
+
+app.get('/CreateEvent', async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:3005/CreateEvent'); // request to create event
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error communicating with CreateEvent' });
+  }
+});
+
+app.get('/Notify', async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:3006/Notify'); // request to notify
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error communicating with Notify' });
+  }
+});
+
+app.get('/ScheduleEvent', async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:3007/ScheduleEvent'); // request to schedule event
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error communicating with ScheduleEvent' });
+  }
+});
+
+app.get('/SendInvite', async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:3008/SendInvite'); // request to send invite
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error communicating with SendInvite' });
+  }
+});
+
+app.get('/Signup', async (req, res) => {
+  try {
+    const response = await axios.get('http://localhost:3009/Signup'); // request to singup
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error communicating with Signup' });
   }
 });
 
